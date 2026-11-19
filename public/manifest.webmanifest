@@ -1,0 +1,12 @@
+{
+  "name": "Sophie Smashes",
+  "short_name": "Sophie Smashes",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff5f9",
+  "theme_color": "#ad2458",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/logo.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
