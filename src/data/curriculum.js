@@ -1,3 +1,4 @@
+// Distances are converted from the booklets' feet and yards to metres.
 // U.S. Kids Golf Player Pathway, Levels 1–5, taken from the Level 1–3 Player
 // Pathway booklets and the Level 4 and Level 5 assessment sheets.
 //
@@ -69,8 +70,8 @@ export const LEVELS = [
             { id: 'bsft', name: 'Backswing = Follow-through' },
           ],
           skills: [
-            makes('short', 'Short Putt', '2 feet, flat green. Make 3 of 5.', 3),
-            strokes('medium', 'Medium Putt', '5 balls from 10 feet. Hole all 5 in 12 strokes or less.', 12),
+            makes('short', 'Short Putt', '0.6 m, flat green. Make 3 of 5.', 3),
+            strokes('medium', 'Medium Putt', '5 balls from 3 m. Hole all 5 in 12 strokes or less.', 12),
           ],
         },
       ],
@@ -84,7 +85,7 @@ export const LEVELS = [
             { id: 'bsft', name: 'Backswing = Follow-through' },
             { id: 'brush', name: 'Brush the Grass' },
           ],
-          skills: [makes('short', 'Short Chip', '20 feet from the hole. 3 of 5 finish within 8 feet.', 3)],
+          skills: [makes('short', 'Short Chip', '6 m from the hole. 3 of 5 finish within 2.4 m.', 3)],
         },
         {
           id: 'pitch',
@@ -96,7 +97,7 @@ export const LEVELS = [
             { id: 'brush', name: 'Brush the Grass' },
             { id: 'finish', name: 'Stick the Finish | Show Some Shoe' },
           ],
-          skills: [makes('short', 'Short Pitch', '10 yards from the green. Land and stay on in 2 of 5.', 2)],
+          skills: [makes('short', 'Short Pitch', '9 m from the green. Land and stay on in 2 of 5.', 2)],
         },
         {
           id: 'sand',
@@ -122,7 +123,7 @@ export const LEVELS = [
             { id: 'release', name: 'Release the “L” | Brush the Grass' },
             { id: 'finish', name: 'Stick the Finish | Show Some Shoe' },
           ],
-          skills: [makes('iron', 'Full Swing Shot', 'Yard Club or 8-iron off a tee. Fly it 25 yards, 3 of 5.', 3)],
+          skills: [makes('iron', 'Full Swing Shot', 'Yard Club or 8-iron off a tee. Fly it 23 m, 3 of 5.', 3)],
         },
       ],
       knowledge: KNOWLEDGE_1_3('Name the 3 club types and parts of a club', 'Show Respect for the Course'),
@@ -131,7 +132,7 @@ export const LEVELS = [
           id: 'score',
           title: 'Playing the Course',
           forms: [],
-          skills: [{ id: 'hole', name: '50-yard hole', detail: 'Score 6 or less, 3 times, from 50 yards.', type: 'holes', yards: 50, target: 6, times: 3 }],
+          skills: [{ id: 'hole', name: '46 m hole', detail: 'Score 6 or less, 3 times, from 46 m.', type: 'holes', metres: 46, target: 6, times: 3 }],
         },
       ],
     },
@@ -155,9 +156,9 @@ export const LEVELS = [
             { id: 'spot', name: 'Aim at a Spot (for break)' },
           ],
           skills: [
-            makes('short', 'Short Putt', '2 feet, flat green. Make 4 of 5.', 4),
-            strokes('medium', 'Medium Putt', '5 balls from 20 feet, gentle slope. Hole all 5 in 13 or less.', 13),
-            strokes('long', 'Long Putt', '5 balls from 40 feet, flat. Hole all 5 in 16 or less.', 16),
+            makes('short', 'Short Putt', '0.6 m, flat green. Make 4 of 5.', 4),
+            strokes('medium', 'Medium Putt', '5 balls from 6 m, gentle slope. Hole all 5 in 13 or less.', 13),
+            strokes('long', 'Long Putt', '5 balls from 12 m, flat. Hole all 5 in 16 or less.', 16),
           ],
         },
       ],
@@ -174,8 +175,8 @@ export const LEVELS = [
             { id: 'train', name: 'Aim the Train' },
           ],
           skills: [
-            makes('short', 'Short Chip', '20 feet from the hole. 4 of 5 within 8 feet.', 4),
-            makes('medium', 'Medium Chip', '40 feet from the hole. 2 of 5 within 8 feet.', 2),
+            makes('short', 'Short Chip', '6 m from the hole. 4 of 5 within 2.4 m.', 4),
+            makes('medium', 'Medium Chip', '12 m from the hole. 2 of 5 within 2.4 m.', 2),
           ],
         },
         {
@@ -189,7 +190,7 @@ export const LEVELS = [
             { id: 'finish', name: 'Stick the Finish | Show Some Shoe' },
             { id: 'train', name: 'Aim the Train' },
           ],
-          skills: [makes('short', 'Short Pitch', '10 yards from the green. Land and stay on in 2 of 5.', 2)],
+          skills: [makes('short', 'Short Pitch', '9 m from the green. Land and stay on in 2 of 5.', 2)],
         },
         {
           id: 'sand',
@@ -218,8 +219,8 @@ export const LEVELS = [
             { id: 'train', name: 'Aim the Train' },
           ],
           skills: [
-            makes('iron', 'Iron Shot', '7 or 8-iron off the ground. Fly it 25 yards, 3 of 5.', 3),
-            makes('driver', 'Driver Shot', 'Driver off a tee. Fly it 40 yards, 3 of 5.', 3),
+            makes('iron', 'Iron Shot', '7 or 8-iron off the ground. Fly it 23 m, 3 of 5.', 3),
+            makes('driver', 'Driver Shot', 'Driver off a tee. Fly it 37 m, 3 of 5.', 3),
           ],
         },
       ],
@@ -229,7 +230,7 @@ export const LEVELS = [
           id: 'score',
           title: 'Playing the Course',
           forms: [],
-          skills: [{ id: 'hole', name: '100-yard hole', detail: 'Score 6 or less, 3 times, from 100 yards.', type: 'holes', yards: 100, target: 6, times: 3 }],
+          skills: [{ id: 'hole', name: '91 m hole', detail: 'Score 6 or less, 3 times, from 91 m.', type: 'holes', metres: 91, target: 6, times: 3 }],
         },
       ],
     },
@@ -253,10 +254,10 @@ export const LEVELS = [
             { id: 'routine', name: 'Putting Routine' },
           ],
           skills: [
-            makes('short', 'Short Putt', '2 feet, flat green. Make 5 of 5.', 5),
-            strokes('medium', 'Medium Putt', '5 balls from 20 feet, right-to-left break. All 5 in 12 or less.', 12),
-            strokes('opposite', 'Opposite Side', '5 balls from 20 feet, left-to-right break. All 5 in 12 or less.', 12),
-            strokes('long', 'Long Putt', '5 balls from 40 feet, flat. All 5 in 13 or less.', 13),
+            makes('short', 'Short Putt', '0.6 m, flat green. Make 5 of 5.', 5),
+            strokes('medium', 'Medium Putt', '5 balls from 6 m, right-to-left break. All 5 in 12 or less.', 12),
+            strokes('opposite', 'Opposite Side', '5 balls from 6 m, left-to-right break. All 5 in 12 or less.', 12),
+            strokes('long', 'Long Putt', '5 balls from 12 m, flat. All 5 in 13 or less.', 13),
           ],
         },
       ],
@@ -275,8 +276,8 @@ export const LEVELS = [
             { id: 'finish', name: 'Stick the Finish and Be Still' },
           ],
           skills: [
-            makes('short', 'Short Chip', '20 feet from the hole. 5 of 5 within 8 feet.', 5),
-            makes('medium', 'Medium Chip', '40 feet from the hole. 3 of 5 within 8 feet.', 3),
+            makes('short', 'Short Chip', '6 m from the hole. 5 of 5 within 2.4 m.', 5),
+            makes('medium', 'Medium Chip', '12 m from the hole. 3 of 5 within 2.4 m.', 3),
           ],
         },
         {
@@ -292,8 +293,8 @@ export const LEVELS = [
             { id: 'finish', name: 'Stick the Finish | Show Some Shoe' },
           ],
           skills: [
-            makes('short', 'Short Pitch', '10 yards from the green. Land and stay on 3 of 5.', 3),
-            makes('medium', 'Medium Pitch', '20 yards from the green. Land and stay on 2 of 5.', 2),
+            makes('short', 'Short Pitch', '9 m from the green. Land and stay on 3 of 5.', 3),
+            makes('medium', 'Medium Pitch', '18 m from the green. Land and stay on 2 of 5.', 2),
           ],
         },
         {
@@ -324,8 +325,8 @@ export const LEVELS = [
             { id: 'routine', name: 'Full Swing Routine' },
           ],
           skills: [
-            makes('iron', 'Iron Shot', '6, 7 or 8-iron off the ground. Fly it 40 yards, 3 of 5.', 3),
-            makes('driver', 'Driver Shot', 'Driver off a tee. Fly it 60 yards, 3 of 5.', 3),
+            makes('iron', 'Iron Shot', '6, 7 or 8-iron off the ground. Fly it 37 m, 3 of 5.', 3),
+            makes('driver', 'Driver Shot', 'Driver off a tee. Fly it 55 m, 3 of 5.', 3),
           ],
         },
       ],
@@ -335,7 +336,7 @@ export const LEVELS = [
           id: 'score',
           title: 'Playing the Course',
           forms: [],
-          skills: [{ id: 'hole', name: '150-yard hole', detail: 'Score 6 or less, 3 times, from 150 yards.', type: 'holes', yards: 150, target: 6, times: 3 }],
+          skills: [{ id: 'hole', name: '137 m hole', detail: 'Score 6 or less, 3 times, from 137 m.', type: 'holes', metres: 137, target: 6, times: 3 }],
         },
       ],
     },
@@ -343,7 +344,7 @@ export const LEVELS = [
   {
     level: 4,
     color: '#2f9e44',
-    blurb: 'Onto the course: 9 holes at about 1,350 yards.',
+    blurb: 'Onto the course: 9 holes at about 1,234 m.',
     checkpoints: {
       putting: [
         {
@@ -364,9 +365,9 @@ export const LEVELS = [
             {
               id: 'combine',
               name: 'Putting Skills Test',
-              detail: '4 stations × 3 rounds: 3-ft merry-go-round, 20 ft on a slope, 20 ft opposite side, 40 ft. Combined 29 or less.',
+              detail: '4 stations × 3 rounds: 0.9 m merry-go-round, 6 m on a slope, 6 m opposite side, 12 m. Combined 29 or less.',
               type: 'grid',
-              stations: ['3 ft', '20 ft', '20 ft opp', '40 ft'],
+              stations: ['0.9 m', '6 m', '6 m opp', '12 m'],
               rounds: 3,
               max: 29,
             },
@@ -395,9 +396,9 @@ export const LEVELS = [
             {
               id: 'chipout',
               name: 'Chip & Putt Out',
-              detail: 'Chip from 20, 40 and 60 feet, then putt out. Total 11 or less.',
+              detail: 'Chip from 6, 12 and 18 m, then putt out. Total 11 or less.',
               type: 'chipout',
-              stations: ['20 ft', '40 ft', '60 ft'],
+              stations: ['6 m', '12 m', '18 m'],
               max: 11,
             },
           ],
@@ -422,9 +423,9 @@ export const LEVELS = [
             {
               id: 'pitchout',
               name: 'Pitch & Putt Out',
-              detail: 'Pitch from 10, 20 and 30 yards, then putt out. Total 12 or less.',
+              detail: 'Pitch from 9, 18 and 27 m, then putt out. Total 12 or less.',
               type: 'chipout',
-              stations: ['10 yd', '20 yd', '30 yd'],
+              stations: ['9 m', '18 m', '27 m'],
               max: 12,
             },
           ],
@@ -463,8 +464,8 @@ export const LEVELS = [
             { id: 'posture', name: 'Posture' },
           ],
           skills: [
-            makes('iron', 'Iron Shot', '6, 7 or 8-iron off the ground. Fly it 50 yards, 3 of 5.', 3),
-            makes('driver', 'Driver Shot', 'Driver off a tee. Fly it 75 yards, 3 of 5.', 3),
+            makes('iron', 'Iron Shot', '6, 7 or 8-iron off the ground. Fly it 46 m, 3 of 5.', 3),
+            makes('driver', 'Driver Shot', 'Driver off a tee. Fly it 69 m, 3 of 5.', 3),
           ],
         },
       ],
@@ -474,7 +475,7 @@ export const LEVELS = [
           id: 'score',
           title: '9 Holes',
           forms: [],
-          skills: [{ id: 'nine', name: '9-hole score', detail: 'Play 9 holes (about 1,350 yards). Score 54 or less once.', type: 'nine', target: 54, times: 1 }],
+          skills: [{ id: 'nine', name: '9-hole score', detail: 'Play 9 holes (about 1,234 m). Score 54 or less once.', type: 'nine', target: 54, times: 1 }],
         },
       ],
     },
@@ -504,9 +505,9 @@ export const LEVELS = [
             {
               id: 'combine',
               name: 'Putting Skills Test',
-              detail: '4 stations × 3 rounds: 3-ft merry-go-round, 20 ft on a slope, 20 ft opposite side, 40 ft. Combined 26 or less.',
+              detail: '4 stations × 3 rounds: 0.9 m merry-go-round, 6 m on a slope, 6 m opposite side, 12 m. Combined 26 or less.',
               type: 'grid',
-              stations: ['3 ft', '20 ft', '20 ft opp', '40 ft'],
+              stations: ['0.9 m', '6 m', '6 m opp', '12 m'],
               rounds: 3,
               max: 26,
             },
@@ -534,9 +535,9 @@ export const LEVELS = [
             {
               id: 'chipout',
               name: 'Chip & Putt Out',
-              detail: 'Chip from 20, 40 and 60 feet, then putt out. Total 10 or less.',
+              detail: 'Chip from 6, 12 and 18 m, then putt out. Total 10 or less.',
               type: 'chipout',
-              stations: ['20 ft', '40 ft', '60 ft'],
+              stations: ['6 m', '12 m', '18 m'],
               max: 10,
             },
           ],
@@ -560,9 +561,9 @@ export const LEVELS = [
             {
               id: 'pitchout',
               name: 'Pitch & Putt Out',
-              detail: 'Pitch from 10, 20 and 30 yards, then putt out. Total 11 or less.',
+              detail: 'Pitch from 9, 18 and 27 m, then putt out. Total 11 or less.',
               type: 'chipout',
-              stations: ['10 yd', '20 yd', '30 yd'],
+              stations: ['9 m', '18 m', '27 m'],
               max: 11,
             },
           ],
@@ -604,8 +605,8 @@ export const LEVELS = [
             { id: 'finish', name: 'PLAY: Stick the Finish, Show Some Shoe' },
           ],
           skills: [
-            makes('iron', 'Iron Shot', '6, 7 or 8-iron off the ground. Fly it 60 yards, 4 of 5.', 4),
-            makes('driver', 'Driver Shot', 'Driver off a tee. Fly it 90 yards, 4 of 5.', 4),
+            makes('iron', 'Iron Shot', '6, 7 or 8-iron off the ground. Fly it 55 m, 4 of 5.', 4),
+            makes('driver', 'Driver Shot', 'Driver off a tee. Fly it 82 m, 4 of 5.', 4),
           ],
         },
       ],
@@ -615,7 +616,7 @@ export const LEVELS = [
           id: 'score',
           title: '9 Holes',
           forms: [],
-          skills: [{ id: 'nine', name: '9-hole score', detail: 'Play 9 holes (about 1,350 yards). Score 51 or less once.', type: 'nine', target: 51, times: 1 }],
+          skills: [{ id: 'nine', name: '9-hole score', detail: 'Play 9 holes (about 1,234 m). Score 51 or less once.', type: 'nine', target: 51, times: 1 }],
         },
       ],
     },
@@ -625,8 +626,8 @@ export const LEVELS = [
 // 9-hole scoring targets further up the pyramid (Player Development pyramid
 // and the Pathway scoring table), used for the "next goals" ladder.
 export const SCORE_LADDER = [
-  { level: 4, nine: 54, note: '54 or less on a 1,350-yard 9' },
-  { level: 5, nine: 51, note: '51 or less on a 1,350-yard 9' },
+  { level: 4, nine: 54, note: '54 or less over 9 holes (about 1,234 m)' },
+  { level: 5, nine: 51, note: '51 or less over 9 holes (about 1,234 m)' },
   { level: 6, nine: 48, note: 'Playing local tours. 48 for 9 holes' },
   { level: 7, nine: 45, note: 'Local tour and multi-day events. 45 for 9' },
   { level: 8, nine: 42, note: '42 or better, twice' },

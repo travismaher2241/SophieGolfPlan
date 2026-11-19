@@ -15,7 +15,9 @@ Everything is buttons. The only text box is in Settings, where a grown-up can ad
 - **Rounds**: per hole, tap par, tee shot (left / fairway / right / trouble), score, putts, penalties,
   bunker, and whether she used her Plan · Setup · Play routine. Shows putts per hole, fairways, greens in
   regulation, saved par, 3-putts, penalties and routine %, last 5 rounds vs the 5 before.
-- **Swing speed**: driver club speed and carry, with her percentile for girls her height, the U.S. Kids
+- **Units**: swing speed in mph; height in cm; every carry, chip and putt distance converted from the
+  booklets' feet and yards to metres.
+- **Swing speed**: driver club speed and carry (metres), with her percentile for girls her height, the U.S. Kids
   driver recommendation, next speed goal, and optimal launch and spin.
 - **Practice log**: what she practised, for how long, and how fun it was.
 - **Progress**: pins by level, 9-hole score chart against the next pyramid goal (54 → 51 → 48 … 36).

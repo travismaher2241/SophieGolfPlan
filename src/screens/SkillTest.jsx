@@ -166,7 +166,7 @@ export default function SkillTest({ skillKey }) {
 
         {skill.type === 'holes' && (
           <>
-            <p className="instr">Play the {skill.yards}-yard hole, then tap your score. Tap a score below to remove it.</p>
+            <p className="instr">Play the {skill.metres} m hole, then tap your score. Tap a score below to remove it.</p>
             <div className="num-pad">
               {[2, 3, 4, 5, 6, 7, 8, 9, 10].map((n) => (
                 <button type="button" key={n} className={`num ${n <= skill.target ? 'good' : ''}`} onClick={() => setVals((xs) => [...xs, n])}>{n}</button>

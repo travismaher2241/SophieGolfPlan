@@ -6,7 +6,7 @@ import {
 import { auth, db, googleProvider, isConfigured } from './firebase.js'
 
 const LOCAL_KEY = 'sophie-smashes-v1'
-const DEFAULT_PROFILE = { level: 4, forms: {}, heightIn: null, courses: [] }
+const DEFAULT_PROFILE = { level: 4, forms: {}, heightCm: null, courses: [] }
 
 const Ctx = createContext(null)
 export const useData = () => useContext(Ctx)

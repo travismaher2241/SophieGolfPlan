@@ -5,7 +5,7 @@ import { ConfirmButton, Segmented, shortDate } from '../components/ui.jsx'
 import { go } from '../App.jsx'
 
 const TEES = [
-  { value: 'pathway', label: 'Pathway 1,350 yds' },
+  { value: 'pathway', label: 'Pathway 1,234 m' },
   { value: 'forward', label: 'Forward tees' },
   { value: 'other', label: 'Other tees' },
 ]

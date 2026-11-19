@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useData } from '../lib/store.jsx'
 import { CHECKPOINTS, getLevel, skillKey } from '../data/curriculum.js'
 import { skillStatus } from '../lib/progress.js'
-import { driverRecFor, nextTarget, optimalFor, percentileFor } from '../data/swing.js'
+import { driverRecFor, heightCmOf, nextTarget, optimalFor, percentileFor } from '../data/swing.js'
 import { ConfirmButton, LineChart, Segmented, Stepper, shortDate } from '../components/ui.jsx'
 import { go } from '../App.jsx'
 
@@ -118,10 +118,10 @@ function SwingSpeed() {
   const logs = entries.filter((e) => e.type === 'swing')
   const last = logs[0]
   const [speed, setSpeed] = useState(last?.speed || 55)
-  const [carry, setCarry] = useState(last?.carry || 80)
+  const [carry, setCarry] = useState(last?.carryM ?? (last?.carry ? Math.round(last.carry * 0.9144) : 75))
   const [saved, setSaved] = useState(false)
-  const [h, setH] = useState(54)
-  const height = profile.heightIn
+  const [h, setH] = useState(137)
+  const height = heightCmOf(profile)
   const p = percentileFor(speed, height)
   const rec = driverRecFor(speed, height)
   const next = nextTarget(speed, height)
@@ -133,18 +133,18 @@ function SwingSpeed() {
         <section className="card">
           <h2>How tall are you (in shoes)?</h2>
           <p className="muted">Used to compare your speed with other girls your height.</p>
-          <Stepper value={h} onChange={setH} min={40} max={72} unit="in" />
-          <button type="button" className="btn btn-primary" onClick={() => saveProfile({ heightIn: h })}>Save {h} in</button>
+          <Stepper value={h} onChange={setH} min={100} max={185} steps={[1, 5]} unit="cm" />
+          <button type="button" className="btn btn-primary" onClick={() => saveProfile({ heightCm: h })}>Save {h} cm</button>
         </section>
       )}
       <section className="card">
         <h2>Driver club speed</h2>
         <Stepper value={speed} onChange={setSpeed} min={20} max={120} steps={[1, 5]} unit="mph" />
         <h2>Carry distance</h2>
-        <Stepper value={carry} onChange={setCarry} min={0} max={300} steps={[1, 10]} unit="yds" />
+        <Stepper value={carry} onChange={setCarry} min={0} max={280} steps={[1, 10]} unit="m" />
         {height && (
           <div className="speed-facts">
-            <div><b>{p ?? '–'}{p && p !== '<5' ? 'th' : ''}</b><span>percentile for {height}" girls</span></div>
+            <div><b>{p ?? '–'}{p && p !== '<5' ? 'th' : ''}</b><span>percentile for {height} cm girls</span></div>
             <div><b>{rec || '–'}</b><span>U.S. Kids driver</span></div>
             <div><b>{next ? `${next.speed}` : '🔥'}</b><span>{next ? `mph = ${next.pct}th %` : 'top of the chart'}</span></div>
           </div>
@@ -155,7 +155,7 @@ function SwingSpeed() {
           type="button"
           className="btn btn-primary btn-xl"
           onClick={async () => {
-            await addEntry({ type: 'swing', club: 'driver', speed, carry, heightIn: height || null })
+            await addEntry({ type: 'swing', club: 'driver', speed, carryM: carry, heightCm: height || null })
             setSaved(true); setTimeout(() => setSaved(false), 2000)
           }}
         >
@@ -171,7 +171,7 @@ function SwingSpeed() {
             {logs.slice(0, 8).map((e) => (
               <li key={e.id}>
                 <span>{shortDate(e.date)}</span>
-                <span>{e.speed} mph · {e.carry ?? '–'} yds</span>
+                <span>{e.speed} mph · {e.carryM ?? (e.carry ? Math.round(e.carry * 0.9144) : '–')} m</span>
                 <span />
                 <ConfirmButton className="x" onConfirm={() => deleteEntry(e.id)}>✕</ConfirmButton>
               </li>

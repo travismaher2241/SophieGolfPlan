@@ -2,11 +2,12 @@ import { useState } from 'react'
 import { useData } from '../lib/store.jsx'
 import { LEVELS } from '../data/curriculum.js'
 import { Segmented, Stepper } from '../components/ui.jsx'
+import { heightCmOf } from '../data/swing.js'
 
 export default function Settings() {
   const { profile, saveProfile, user, cloud, signOut, entries } = useData()
   const [course, setCourse] = useState('')
-  const [h, setH] = useState(profile.heightIn || 54)
+  const [h, setH] = useState(heightCmOf(profile) || 137)
 
   const addCourse = () => {
     const name = course.trim()
@@ -30,8 +31,8 @@ export default function Settings() {
         <h2>Current level</h2>
         <Segmented options={LEVELS.map((l) => ({ value: l.level, label: `Level ${l.level}` }))} value={profile.level} onChange={(level) => saveProfile({ level })} wrap />
         <h2>Height in shoes</h2>
-        <Stepper value={h} onChange={setH} min={40} max={72} unit="in" />
-        <button type="button" className="btn" disabled={h === profile.heightIn} onClick={() => saveProfile({ heightIn: h })}>Save height</button>
+        <Stepper value={h} onChange={setH} min={100} max={185} steps={[1, 5]} unit="cm" />
+        <button type="button" className="btn" disabled={h === heightCmOf(profile)} onClick={() => saveProfile({ heightCm: h })}>Save height</button>
       </section>
 
       <section className="card">

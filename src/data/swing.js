@@ -1,5 +1,6 @@
 // From the U.S. Kids Golf "Player Swing Speed Development" sheet (Swing Consultation).
 // Girls' driver club speed (mph) by player height, at each percentile.
+// The sheet's height bands are in inches (48"–66"); the app works in cm.
 export const PERCENTILES = [5, 15, 25, 35, 45, 55, 65, 75, 85, 95]
 
 export const GIRLS_SPEED_BY_HEIGHT = {
@@ -25,15 +26,22 @@ const DRIVER_RECS = {
 
 export const HEIGHT_BANDS = Object.keys(GIRLS_SPEED_BY_HEIGHT).map(Number)
 
-export function bandFor(heightIn) {
-  if (!heightIn) return null
+export const CM_PER_IN = 2.54
+export const bandCm = (band) => Math.round(band * CM_PER_IN)
+
+// Sophie's height in cm (older saves stored inches).
+export const heightCmOf = (profile) => profile?.heightCm || (profile?.heightIn ? Math.round(profile.heightIn * CM_PER_IN) : null)
+
+export function bandFor(heightCm) {
+  if (!heightCm) return null
+  const heightIn = heightCm / CM_PER_IN
   let band = HEIGHT_BANDS[0]
   for (const h of HEIGHT_BANDS) if (heightIn >= h - 1) band = h
   return band
 }
 
-export function percentileFor(speed, heightIn) {
-  const band = bandFor(heightIn)
+export function percentileFor(speed, heightCm) {
+  const band = bandFor(heightCm)
   if (!band || !speed) return null
   const row = GIRLS_SPEED_BY_HEIGHT[band]
   if (speed < row[0]) return '<5'
@@ -42,8 +50,8 @@ export function percentileFor(speed, heightIn) {
   return p
 }
 
-export function driverRecFor(speed, heightIn) {
-  const band = bandFor(heightIn)
+export function driverRecFor(speed, heightCm) {
+  const band = bandFor(heightCm)
   if (!band || !speed) return null
   for (const r of DRIVER_RECS[band]) if (r.max == null || speed < r.max) return r.name
   return null
@@ -64,8 +72,8 @@ export function optimalFor(speed) {
 }
 
 // Next speed target: the speed at the next percentile up for her height.
-export function nextTarget(speed, heightIn) {
-  const band = bandFor(heightIn)
+export function nextTarget(speed, heightCm) {
+  const band = bandFor(heightCm)
   if (!band) return null
   const row = GIRLS_SPEED_BY_HEIGHT[band]
   const next = row.find((s) => s > (speed || 0))
