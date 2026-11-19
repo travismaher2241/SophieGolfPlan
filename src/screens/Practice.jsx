@@ -5,6 +5,7 @@ import { skillStatus } from '../lib/progress.js'
 import { driverRecFor, heightCmOf, nextTarget, optimalFor, percentileFor } from '../data/swing.js'
 import { ConfirmButton, LineChart, Segmented, Stepper, shortDate } from '../components/ui.jsx'
 import { go } from '../App.jsx'
+import Quiz from './Quiz.jsx'
 
 const AREAS = [
   { value: 'putting', label: '⛳ Putting' },
@@ -188,11 +189,11 @@ export default function Practice({ tab = 'tests' }) {
     <div className="stack">
       <h1 className="page-title">Practice</h1>
       <Segmented
-        options={[{ value: 'tests', label: '🎯 Tests' }, { value: 'log', label: '⏱️ Log' }, { value: 'speed', label: '💨 Speed' }]}
+        options={[{ value: 'tests', label: '🎯 Tests' }, { value: 'log', label: '⏱️ Log' }, { value: 'speed', label: '💨 Speed' }, { value: 'quiz', label: '🧠 Quiz' }]}
         value={tab}
         onChange={(t) => go(`practice/${t}`)}
       />
-      {tab === 'log' ? <PracticeLog /> : tab === 'speed' ? <SwingSpeed /> : <Tests />}
+      {tab === 'log' ? <PracticeLog /> : tab === 'speed' ? <SwingSpeed /> : tab === 'quiz' ? <Quiz /> : <Tests />}
     </div>
   )
 }

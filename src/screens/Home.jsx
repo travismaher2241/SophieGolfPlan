@@ -46,6 +46,7 @@ export default function Home() {
         <button type="button" className="quick-btn" onClick={() => go('practice/tests')}><span>🎯</span>Skills test</button>
         <button type="button" className="quick-btn" onClick={() => go('practice/log')}><span>⏱️</span>Log practice</button>
         <button type="button" className="quick-btn" onClick={() => go('practice/speed')}><span>💨</span>Swing speed</button>
+        <button type="button" className="quick-btn" onClick={() => go('practice/quiz')}><span>🧠</span>Rules quiz</button>
         <button type="button" className="quick-btn" onClick={() => go(`pathway/${level.level}`)}><span>✅</span>My forms</button>
       </section>
 

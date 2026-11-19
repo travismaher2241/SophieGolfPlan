@@ -38,6 +38,7 @@ export default function Progress() {
   for (const e of entries.filter((x) => x.type === 'skill' && (x.total != null || x.made != null))) (byKey[e.key] ||= []).push(e)
 
   const speeds = entries.filter((e) => e.type === 'swing').reverse()
+  const quizzes = entries.filter((e) => e.type === 'quiz').reverse()
 
   const weeks = Array.from({ length: 8 }, (_, i) => {
     const end = Date.now() - i * 7 * 864e5
@@ -113,6 +114,11 @@ export default function Progress() {
           })}
         </section>
       )}
+
+      <section className="card">
+        <h2>Rules & etiquette quiz (out of 10)</h2>
+        <LineChart points={quizzes.map((e) => ({ x: shortDate(e.date), y: e.score }))} target={10} />
+      </section>
 
       <section className="card">
         <h2>Driver speed (mph)</h2>

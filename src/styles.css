@@ -269,3 +269,23 @@ h3 { font-size: 0.95rem; font-weight: 800; margin: 14px 0 6px; color: var(--mage
 .inline-form { display: flex; gap: 8px; }
 .inline-form input { flex: 1; min-height: var(--tap); border-radius: 14px; border: 2px solid var(--line); padding: 0 12px; font: inherit; font-size: 16px; min-width: 0; }
 .inline-form .btn { width: auto; margin-top: 0; }
+
+/* Quiz */
+.seg-btn { overflow-wrap: anywhere; }
+.quiz-top { display: flex; justify-content: space-between; font-weight: 800; color: var(--magenta); font-size: .9rem; }
+.quiz-dots { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; }
+.qdot { height: 8px; border-radius: 99px; background: var(--pink-soft); }
+.qdot.on { background: var(--magenta); }
+.qdot.right { background: var(--good); }
+.qdot.wrong { background: var(--bad); }
+.quiz-q { font-size: 1.3rem; font-weight: 900; color: var(--magenta-dark); line-height: 1.3; margin-bottom: 14px; }
+.answers { display: flex; flex-direction: column; gap: 8px; }
+.answer { min-height: 58px; text-align: left; border-radius: 14px; border: 2px solid var(--line); background: white; padding: 10px 14px; font-weight: 800; font-size: 1rem; line-height: 1.3; }
+.answer.right { background: var(--good-soft); border-color: var(--good); color: var(--good); }
+.answer.wrong { background: #fff1eb; border-color: var(--bad); color: var(--bad); }
+.answer.dim { opacity: .5; }
+.quiz-score { font-size: 3rem; font-weight: 900; color: var(--magenta); }
+.review { padding: 10px 0; border-bottom: 1px solid var(--line); }
+.review:last-child { border-bottom: 0; }
+.review-q { font-weight: 800; }
+.review-a { color: var(--good); font-weight: 800; margin: 4px 0; }
