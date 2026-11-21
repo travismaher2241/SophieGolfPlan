@@ -3,7 +3,7 @@ import { LEVELS, SCORE_LADDER, findSkill } from '../data/curriculum.js'
 import { levelStatus } from '../lib/progress.js'
 import { roundTotals, roundTrends, pct, num } from '../lib/stats.js'
 import { LineChart, shortDate } from '../components/ui.jsx'
-import { RoundSummary } from './Round.jsx'
+import { RoundSummary, ShotBreakdown } from './Round.jsx'
 
 function Trend({ label, m, fmt, lowerIsBetter }) {
   let arrow = ''
@@ -85,6 +85,14 @@ export default function Progress() {
           </div>
         )}
       </section>
+
+      {rounds.some((r) => r.mode === 'shots') && (
+        <section className="card">
+          <h2>Ball striking (shot-by-shot rounds)</h2>
+          <p className="muted small">Last 5 shot-by-shot rounds. "On target" means it finished on the fairway, fringe or green.</p>
+          <ShotBreakdown rounds={rounds.filter((r) => r.mode === 'shots').slice(0, 5)} />
+        </section>
+      )}
 
       <section className="card">
         <h2>9-hole scores</h2>
