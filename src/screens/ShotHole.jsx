@@ -29,9 +29,21 @@ export default function ShotHole({ hole, number, onChange, onNext, isLast }) {
     <div className="shot-head">
       <div>
         <h1>Hole {number}</h1>
-        <div className="muted small">Par {hole.par}{hole.metres ? ` · ${hole.metres} m` : ''}</div>
+        {hole.metres ? <div className="muted small">{hole.metres} m</div> : null}
       </div>
       <div className="shot-count"><b>{strokesSoFar}</b><span>strokes</span></div>
+      <div className="seg par-pick" style={{ flexBasis: '100%', marginTop: 10 }}>
+        {[3, 4, 5].map((p) => (
+          <button
+            type="button"
+            key={p}
+            className={`seg-btn ${hole.par === p ? 'on' : ''}`}
+            onClick={() => onChange({ par: p, ...deriveHole({ ...hole, par: p }) })}
+          >
+            Par {p}
+          </button>
+        ))}
+      </div>
     </div>
   )
 
