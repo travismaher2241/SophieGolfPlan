@@ -1,6 +1,6 @@
 // Shot-by-shot helpers: what each tap means and how it adds up.
 
-export const CLUBS = ['Driver', '3 Wood', 'Hybrid', '5i', '6i', '7i', '8i', '9i', 'PW', 'SW', 'Putter']
+export const CLUBS = ['Driver', '3 Wood', '4 Hybrid', '5i', '6i', '7i', '8i', '9i', 'PW', '52°', '56°', '60°', 'Putter']
 
 export const STRIKES = [
   { value: 'good', label: '✅ Good strike' },
