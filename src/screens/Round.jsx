@@ -122,6 +122,26 @@ function HoleView({ round }) {
         ))}
       </div>
 
+      {!shotMode && (
+        <div className="banner">
+          {totals.holesPlayed === 0 ? (
+            <>
+              This round is set to Quick score.
+              <button
+                type="button"
+                className="btn btn-primary"
+                style={{ marginTop: 8, width: '100%' }}
+                onClick={() => updateEntry(round.id, { mode: 'shots', holes: round.holes.map((x) => ({ ...x, shots: x.shots || [] })) })}
+              >
+                🏌️‍♀️ Switch to shot by shot
+              </button>
+            </>
+          ) : (
+            <>Quick score round. To track shot by shot, tap End round early below, then start a new round and pick Shot by shot.</>
+          )}
+        </div>
+      )}
+
       {shotMode ? (
         <ShotHole
           key={idx}
