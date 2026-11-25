@@ -16,6 +16,7 @@ const TABS = [
   { id: 'home', label: 'Home', icon: '🏠' },
   { id: 'pathway', label: 'Pathway', icon: '📍' },
   { id: 'round', label: 'Round', icon: '⛳' },
+  { id: 'tour', label: 'Tour', icon: '🏆' },
   { id: 'practice', label: 'Practice', icon: '🎯' },
   { id: 'progress', label: 'Progress', icon: '📈' },
 ]
@@ -72,7 +73,7 @@ export default function App() {
           <button
             type="button"
             key={t.id}
-            className={`tab ${page === t.id || (t.id === 'practice' && page === 'test') || (t.id === 'round' && page === 'tour') || (t.id === 'home' && !TABS.some((x) => x.id === page) && page !== 'test' && page !== 'settings' && page !== 'tour') ? 'on' : ''}`}
+            className={`tab ${page === t.id || (t.id === 'practice' && page === 'test') || (t.id === 'home' && !TABS.some((x) => x.id === page) && page !== 'test' && page !== 'settings') ? 'on' : ''}`}
             onClick={() => go(t.id)}
           >
             <span className="tab-icon">{t.icon}</span>

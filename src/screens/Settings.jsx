@@ -44,7 +44,7 @@ export default function Settings() {
           <input type="date" value={dob} onChange={(e) => setDob(e.target.value)} />
           <button type="button" className="btn btn-primary" disabled={!dob || dob === (profile.dob || '')} onClick={() => saveProfile({ dob })}>Save</button>
         </div>
-        <button type="button" className="btn" onClick={() => go('tour')}>🏆 Tournament results</button>
+        <button type="button" className="btn" onClick={() => go('tour')}>🏆 Tournaments</button>
       </section>
 
       <section className="card">

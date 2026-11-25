@@ -30,6 +30,7 @@ export function DataProvider({ children }) {
   const [profile, setProfile] = useState(isConfigured ? null : readLocal().profile)
   const [entries, setEntries] = useState(isConfigured ? [] : readLocal().entries)
   const [syncing, setSyncing] = useState(false)
+  const [ready, setReady] = useState(!isConfigured) // entries have loaded at least once
 
   // Cloud mode: follow sign-in, then live-listen to the profile and entries.
   useEffect(() => {
@@ -49,6 +50,7 @@ export function DataProvider({ children }) {
       (snap) => {
         setEntries(snap.docs.map((d) => ({ id: d.id, ...d.data() })))
         setSyncing(snap.metadata.hasPendingWrites)
+        setReady(true)
       },
     )
     return () => { unsubProfile(); unsubEntries() }
@@ -117,8 +119,8 @@ export function DataProvider({ children }) {
 
   const value = useMemo(() => ({
     user, profile, entries, syncing, cloud: isConfigured,
-    saveProfile, toggleForm, addEntry, updateEntry, deleteEntry, signIn, signOut,
-  }), [user, profile, entries, syncing, saveProfile, toggleForm, addEntry, updateEntry, deleteEntry, signIn, signOut])
+    saveProfile, toggleForm, addEntry, updateEntry, deleteEntry, signIn, signOut, ready,
+  }), [user, profile, entries, syncing, ready, saveProfile, toggleForm, addEntry, updateEntry, deleteEntry, signIn, signOut])
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>
 }
