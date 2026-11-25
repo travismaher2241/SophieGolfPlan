@@ -10,6 +10,7 @@ import Settings from './screens/Settings.jsx'
 import SignIn from './screens/SignIn.jsx'
 import Tournament from './screens/Tournament.jsx'
 import Letter from './screens/Letter.jsx'
+import Compare from './screens/Compare.jsx'
 
 const TABS = [
   { id: 'home', label: 'Home', icon: '🏠' },
@@ -49,7 +50,7 @@ export default function App() {
     case 'practice': screen = <Practice tab={rest[0]} />; break
     case 'progress': screen = <Progress />; break
     case 'settings': screen = <Settings />; break
-    case 'tour': screen = rest[0] === 'letter' ? <Letter /> : <Tournament />; break
+    case 'tour': screen = rest[0] === 'letter' ? <Letter /> : rest[0] === 'compare' ? <Compare /> : <Tournament />; break
     default: screen = <Home />
   }
 

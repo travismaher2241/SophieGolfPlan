@@ -400,3 +400,13 @@ h3 { font-size: 0.95rem; font-weight: 800; margin: 14px 0 6px; color: var(--mage
 .club-table tr.on td { background: rgba(214, 51, 132, 0.08); }
 .club-table .gap-tight { color: #c76a00; font-weight: 700; }
 .club-table .gap-wide { color: #2563eb; font-weight: 700; }
+
+/* Journey comparison */
+.cmp-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.cmp-actions .btn { flex: 1; }
+.chart .cmp-them { stroke: #9aa3b2; stroke-width: 2; stroke-dasharray: 4 3; fill: none; }
+.chart .cmp-them-dot { fill: #9aa3b2; }
+.cmp-key { display: inline-block; width: 14px; height: 4px; border-radius: 2px; vertical-align: middle; margin: 0 4px 0 8px; }
+.cmp-key.me { background: var(--magenta, #d63384); }
+.cmp-key.them { background: #9aa3b2; }
+.cmp-table tr.on td { background: rgba(214, 51, 132, 0.06); }

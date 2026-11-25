@@ -240,6 +240,7 @@ export default function Tournament() {
       <p className="muted">For grown-ups: U.S. Kids Local Tour results. Rounds Sophie tracks in the app as Tournament show up here too, so you can add the field.</p>
       <button type="button" className="btn btn-primary btn-xl" onClick={() => setEditing('new')}>🏆 Add a tournament</button>
       {list.length > 0 && <button type="button" className="btn" onClick={() => go('tour/letter')}>✉️ Write Sophie a note</button>}
+      {list.length > 0 && <button type="button" className="btn" onClick={() => go('tour/compare')}>🔒 Compare journeys</button>}
 
       <section className="card">
         <h2>Results</h2>
