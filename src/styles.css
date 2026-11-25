@@ -415,3 +415,6 @@ h3 { font-size: 0.95rem; font-weight: 800; margin: 14px 0 6px; color: var(--mage
 .wins { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
 .wins li { display: flex; gap: 10px; align-items: center; background: var(--blush); border-radius: 12px; padding: 10px 12px; font-weight: 700; color: var(--magenta-dark); }
 .wins li span { font-size: 1.3rem; }
+.manage-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.manage-row > div { display: flex; flex-direction: column; min-width: 0; }
+.manage-row .btn { width: auto; flex: none; padding: 6px 12px; }
