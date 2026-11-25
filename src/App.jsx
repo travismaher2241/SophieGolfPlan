@@ -8,6 +8,7 @@ import Practice from './screens/Practice.jsx'
 import Progress from './screens/Progress.jsx'
 import Settings from './screens/Settings.jsx'
 import SignIn from './screens/SignIn.jsx'
+import Tournament from './screens/Tournament.jsx'
 
 const TABS = [
   { id: 'home', label: 'Home', icon: '🏠' },
@@ -47,6 +48,7 @@ export default function App() {
     case 'practice': screen = <Practice tab={rest[0]} />; break
     case 'progress': screen = <Progress />; break
     case 'settings': screen = <Settings />; break
+    case 'tour': screen = <Tournament />; break
     default: screen = <Home />
   }
 
@@ -68,7 +70,7 @@ export default function App() {
           <button
             type="button"
             key={t.id}
-            className={`tab ${page === t.id || (t.id === 'practice' && page === 'test') || (t.id === 'home' && !TABS.some((x) => x.id === page) && page !== 'test' && page !== 'settings') ? 'on' : ''}`}
+            className={`tab ${page === t.id || (t.id === 'practice' && page === 'test') || (t.id === 'round' && page === 'tour') || (t.id === 'home' && !TABS.some((x) => x.id === page) && page !== 'test' && page !== 'settings' && page !== 'tour') ? 'on' : ''}`}
             onClick={() => go(t.id)}
           >
             <span className="tab-icon">{t.icon}</span>

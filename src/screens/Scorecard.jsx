@@ -3,7 +3,7 @@ import { useData } from '../lib/store.jsx'
 import { Segmented } from '../components/ui.jsx'
 
 // Shrink a phone photo so it uploads fast and fits the API's limits.
-function shrink(file, max = 1600) {
+export function shrink(file, max = 1600) {
   return new Promise((resolve, reject) => {
     const img = new Image()
     img.onload = () => {

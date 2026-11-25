@@ -327,3 +327,23 @@ h3 { font-size: 0.95rem; font-weight: 800; margin: 14px 0 6px; color: var(--mage
 .club-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: .85rem; }
 .club-table th { text-align: left; color: var(--muted); font-weight: 800; padding: 4px; border-bottom: 1px solid var(--line); }
 .club-table td { padding: 6px 4px; border-bottom: 1px solid var(--line); font-weight: 700; }
+
+/* Tournaments (grown-ups) */
+.tour-form label { display: flex; flex-direction: column; gap: 4px; font-weight: 800; font-size: .85rem; color: var(--magenta-dark); margin-top: 10px; }
+.tour-form input, .tour-form textarea { min-height: 46px; border-radius: 12px; border: 2px solid var(--line); padding: 8px 10px; font: inherit; font-size: 16px; font-weight: 600; color: var(--ink); background: white; width: 100%; }
+.tour-form textarea { min-height: 0; resize: vertical; }
+.file-btn.disabled { opacity: .6; pointer-events: none; }
+.tour-grid-wrap { overflow-x: auto; margin-top: 8px; }
+.tour-grid { width: 100%; border-collapse: collapse; font-size: .85rem; }
+.tour-grid th { color: var(--muted); font-weight: 800; padding: 4px 2px; text-align: center; }
+.tour-grid td { padding: 2px; text-align: center; }
+.tour-grid input { min-height: 40px; padding: 4px; text-align: center; width: 100%; min-width: 44px; }
+.tour-row { display: flex; align-items: center; gap: 12px; width: 100%; background: none; border: 0; border-bottom: 1px solid var(--line); padding: 10px 0; text-align: left; }
+.tour-row:last-of-type { border-bottom: 0; }
+.tour-score { display: flex; flex-direction: column; align-items: center; min-width: 52px; background: var(--blush); border-radius: 12px; padding: 6px 4px; }
+.tour-score b { font-size: 1.3rem; font-weight: 900; color: var(--magenta-dark); line-height: 1.1; }
+.tour-score span { font-size: .75rem; font-weight: 800; color: var(--muted); }
+.tour-info { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.tour-info b { font-weight: 800; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tour-info span { font-size: .8rem; color: var(--muted); font-weight: 700; }
+.tour-finish { font-weight: 900; color: var(--magenta); white-space: nowrap; }
