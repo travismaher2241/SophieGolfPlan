@@ -101,6 +101,8 @@ function HoleView({ round }) {
             Finish round ({totals.holesPlayed} holes)
           </button>
           <button type="button" className="btn" onClick={() => setFinishing(false)}>Keep playing</button>
+          <ConfirmButton className="btn btn-ghost" onConfirm={() => deleteEntry(round.id)}>Just practice, don’t save it</ConfirmButton>
+          <p className="muted small">“Just practice” throws this round away, so it won’t count in her scores.</p>
         </section>
       </div>
     )
@@ -212,7 +214,7 @@ function HoleView({ round }) {
       </div>
       <div className="hole-nav">
         <button type="button" className="btn btn-ghost" onClick={() => setFinishing(true)}>End round early</button>
-        <ConfirmButton className="btn btn-ghost danger" onConfirm={() => deleteEntry(round.id)}>Delete round</ConfirmButton>
+        <ConfirmButton className="btn btn-ghost" onConfirm={() => deleteEntry(round.id)}>Stop, don’t save</ConfirmButton>
       </div>
     </div>
   )

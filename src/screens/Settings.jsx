@@ -48,6 +48,12 @@ export default function Settings() {
       </section>
 
       <section className="card">
+        <h2>Rounds (for grown-ups)</h2>
+        <p className="muted small">Delete test rounds or ones that shouldn’t count.</p>
+        <button type="button" className="btn" onClick={() => go('rounds')}>🗑️ Manage rounds</button>
+      </section>
+
+      <section className="card">
         <h2>Courses (for grown-ups)</h2>
         <p className="muted small">Add course names once here, then Sophie just taps them when starting a round.</p>
         <div className="inline-form">
