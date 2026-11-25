@@ -6,6 +6,7 @@ import { driverRecFor, heightCmOf, nextTarget, optimalFor, percentileFor } from 
 import { ConfirmButton, LineChart, Segmented, Stepper, shortDate } from '../components/ui.jsx'
 import { go } from '../App.jsx'
 import Quiz from './Quiz.jsx'
+import Clubs from './Clubs.jsx'
 
 const AREAS = [
   { value: 'putting', label: '⛳ Putting' },
@@ -189,11 +190,12 @@ export default function Practice({ tab = 'tests' }) {
     <div className="stack">
       <h1 className="page-title">Practice</h1>
       <Segmented
-        options={[{ value: 'tests', label: '🎯 Tests' }, { value: 'log', label: '⏱️ Log' }, { value: 'speed', label: '💨 Speed' }, { value: 'quiz', label: '🧠 Quiz' }]}
+        options={[{ value: 'tests', label: '🎯 Tests' }, { value: 'log', label: '⏱️ Log' }, { value: 'speed', label: '💨 Speed' }, { value: 'clubs', label: '📏 Clubs' }, { value: 'quiz', label: '🧠 Quiz' }]}
         value={tab}
         onChange={(t) => go(`practice/${t}`)}
+        wrap
       />
-      {tab === 'log' ? <PracticeLog /> : tab === 'speed' ? <SwingSpeed /> : tab === 'quiz' ? <Quiz /> : <Tests />}
+      {tab === 'log' ? <PracticeLog /> : tab === 'speed' ? <SwingSpeed /> : tab === 'clubs' ? <Clubs /> : tab === 'quiz' ? <Quiz /> : <Tests />}
     </div>
   )
 }

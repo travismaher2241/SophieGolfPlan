@@ -391,3 +391,12 @@ h3 { font-size: 0.95rem; font-weight: 800; margin: 14px 0 6px; color: var(--mage
   .print-only .letter-cols { column-gap: 22mm; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
+
+/* Club distances */
+.club-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+.club-table th { text-align: left; font-weight: 600; color: var(--muted, #667); padding: 4px 6px; border-bottom: 1px solid rgba(0,0,0,0.1); }
+.club-table td { padding: 7px 6px; border-bottom: 1px solid rgba(0,0,0,0.06); }
+.club-table tr { cursor: pointer; }
+.club-table tr.on td { background: rgba(214, 51, 132, 0.08); }
+.club-table .gap-tight { color: #c76a00; font-weight: 700; }
+.club-table .gap-wide { color: #2563eb; font-weight: 700; }
