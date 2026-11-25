@@ -27,6 +27,15 @@ export function roundTotals(round) {
     return vals.length ? vals.filter(Boolean).length / vals.length : null
   }
   const puttHoles = facts.filter((f) => f.putts != null)
+  // A tournament entered as a total only (no hole-by-hole scores).
+  if (!facts.length && round.totalScore) {
+    const n = round.holesPlanned || 9
+    return {
+      holesPlayed: n, score: round.totalScore, toPar: round.totalScore - (round.totalPar || (n === 18 ? 72 : 36)),
+      putts: null, puttsPerHole: null, girPct: null, fairwayPct: null, scramblePct: null,
+      threePutts: 0, onePutts: 0, penalties: 0, routinePct: null, per9: (round.totalScore * 9) / n,
+    }
+  }
   return {
     holesPlayed: facts.length,
     score: sum((f) => f.score),

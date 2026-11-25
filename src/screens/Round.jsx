@@ -298,6 +298,7 @@ export default function Round() {
       <p className="muted">Shot by shot: tap the club, the strike and where it finished, and the app counts the score. Or pick Quick score to tap just the score and putts. Works without signal and saves as you go.</p>
       {recent.map((r) => <section className="card" key={r.id}><RoundSummary round={r} /></section>)}
       {recent.length > 0 && <button type="button" className="btn" onClick={() => go('progress')}>See all my progress ›</button>}
+      <button type="button" className="btn" onClick={() => go('tour')}>🏆 Tournament results (grown-ups)</button>
     </div>
   )
 }
