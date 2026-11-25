@@ -96,3 +96,52 @@ export const SPRING_2026 = [
     event: { tour: 'Melbourne Local Tour', field: [38, 41, 41, 45, 45, 45, 46, 56].map((score) => ({ name: '', score })), notes: 'Soft fairways, slow and bumpy greens. 17 putts and a green in regulation on the par-4 5th.' },
   },
 ]
+
+// ---- Seasons and Priority Status ---------------------------------------------
+// Melbourne Local Tour seasons follow Australian seasons. Summer spans the new
+// year, so it's named by both years.
+export function seasonOf(iso) {
+  const d = new Date(iso)
+  const m = d.getMonth(); const y = d.getFullYear()
+  if (m === 11) return { key: `${y}-summer`, label: `Summer ${y}–${String(y + 1).slice(2)}`, ends: new Date(y + 1, 2, 0) }
+  if (m <= 1) return { key: `${y - 1}-summer`, label: `Summer ${y - 1}–${String(y).slice(2)}`, ends: new Date(y, 2, 0) }
+  if (m <= 4) return { key: `${y}-autumn`, label: `Autumn ${y}`, ends: new Date(y, 5, 0) }
+  if (m <= 7) return { key: `${y}-winter`, label: `Winter ${y}`, ends: new Date(y, 8, 0) }
+  return { key: `${y}-spring`, label: `Spring ${y}`, ends: new Date(y, 11, 0) }
+}
+
+// U.S. Kids Golf: "Participants must play four (4) Local Tour events within a
+// season on the same Local Tour to earn Priority Status", using "the two (2)
+// lowest scores totaled". By order of finish, the two lowest combined "must be
+// 180/90 or lower" (18/9 holes).
+export const EVENTS_NEEDED = 4
+export const ORDER_OF_FINISH_MAX_9 = 90
+
+export function priorityStatus(entries, today = new Date()) {
+  const list = tournaments(entries)
+  if (!list.length) return null
+  const bySeason = new Map()
+  for (const r of list) {
+    const s = seasonOf(r.date)
+    if (!bySeason.has(s.key)) bySeason.set(s.key, { ...s, rounds: [] })
+    bySeason.get(s.key).rounds.push(r)
+  }
+  const current = bySeason.get(seasonOf(today.toISOString()).key)
+  const season = current || [...bySeason.values()].pop()
+  const scores = season.rounds.map((r) => ({ round: r, score: Math.round(roundTotals(r).per9) })).sort((a, b) => a.score - b.score)
+  const bestTwo = scores.slice(0, 2)
+  const total = bestTwo.length === 2 ? bestTwo[0].score + bestTwo[1].score : null
+  const best = bestTwo[0]?.score ?? null
+  return {
+    season,
+    isCurrent: Boolean(current),
+    played: season.rounds.length,
+    needed: Math.max(0, EVENTS_NEEDED - season.rounds.length),
+    bestTwo,
+    total,
+    // Score she'd need next time (with her best) to reach the order-of-finish mark.
+    needForOrderOfFinish: best != null ? ORDER_OF_FINISH_MAX_9 - best : null,
+    underOrderOfFinish: total != null && total <= ORDER_OF_FINISH_MAX_9,
+    seasons: [...bySeason.values()].map((s) => ({ label: s.label, played: s.rounds.length })),
+  }
+}
