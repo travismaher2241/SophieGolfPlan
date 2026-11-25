@@ -6,7 +6,7 @@ import {
 import { auth, db, googleProvider, isConfigured } from './firebase.js'
 
 const LOCAL_KEY = 'sophie-smashes-v1'
-const DEFAULT_PROFILE = { level: 4, forms: {}, heightCm: null, courses: [] }
+const DEFAULT_PROFILE = { level: 4, forms: {}, heightCm: null, courses: [], dob: '2017-05-17' }
 
 const Ctx = createContext(null)
 export const useData = () => useContext(Ctx)
@@ -17,7 +17,7 @@ const uid = () => Math.random().toString(36).slice(2) + Date.now().toString(36)
 function readLocal() {
   try {
     const raw = localStorage.getItem(LOCAL_KEY)
-    if (raw) return JSON.parse(raw)
+    if (raw) { const d = JSON.parse(raw); return { ...d, profile: { ...DEFAULT_PROFILE, ...d.profile } } }
   } catch { /* ignore */ }
   return { profile: DEFAULT_PROFILE, entries: [] }
 }
