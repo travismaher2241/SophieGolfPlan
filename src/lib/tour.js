@@ -1,7 +1,10 @@
 // Tournament results (U.S. Kids Golf Local Tour) and Sophie's age division.
 import { roundTotals } from './stats.js'
 
-export const isTournament = (e) => e.type === 'round' && e.kind === 'event' && e.status === 'done'
+const isEventRound = (e) => e.type === 'round' && e.kind === 'event' && e.status === 'done'
+// Only U.S. Kids Golf tour rounds count. Other competitions marked Tournament in the app stay out.
+export const isTournament = (e) => isEventRound(e) && Boolean(e.event?.tour)
+export const otherEvents = (entries) => entries.filter((e) => isEventRound(e) && !e.event?.tour)
 
 export const tournaments = (entries) =>
   entries.filter(isTournament).sort((a, b) => a.date.localeCompare(b.date))
