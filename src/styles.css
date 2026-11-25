@@ -410,3 +410,5 @@ h3 { font-size: 0.95rem; font-weight: 800; margin: 14px 0 6px; color: var(--mage
 .cmp-key.me { background: var(--magenta, #d63384); }
 .cmp-key.them { background: #9aa3b2; }
 .cmp-table tr.on td { background: rgba(214, 51, 132, 0.06); }
+.tour-other { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--line); font-size: .9rem; }
+.tour-other .btn { width: auto; padding: 6px 10px; font-size: .8rem; }

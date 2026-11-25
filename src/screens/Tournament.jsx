@@ -6,7 +6,7 @@ import { go } from '../App.jsx'
 import { shrink } from './Scorecard.jsx'
 import TourInsights from './TourInsights.jsx'
 import {
-  divisionFor, fieldText, finishLabel, finishOf, parseField, SPRING_2026, tournaments,
+  divisionFor, fieldText, finishLabel, finishOf, parseField, SPRING_2026, tournaments, otherEvents,
 } from '../lib/tour.js'
 
 const toPar = (n) => (n > 0 ? `+${n}` : n === 0 ? 'E' : String(n))
@@ -227,7 +227,8 @@ export function TourRow({ round, onOpen }) {
 }
 
 export default function Tournament() {
-  const { entries, addEntry, profile, saveProfile, ready } = useData()
+  const { entries, addEntry, updateEntry, profile, saveProfile, ready } = useData()
+  const others = otherEvents(entries)
   const [editing, setEditing] = useState(null) // null | 'new' | round
   const list = tournaments(entries)
   const missingSeed = SPRING_2026.filter((s) => !list.some((r) => r.course === s.course && r.date.slice(0, 10) === s.date.slice(0, 10)))
@@ -262,6 +263,18 @@ export default function Tournament() {
         {list.length > 0 && <button type="button" className="btn" onClick={() => go('tour/compare')}>🔒 Compare journeys</button>}
         {missingSeed.length > 0 && profile.seededTour && (
           <button type="button" className="btn" onClick={() => missingSeed.forEach((s) => addEntry(structuredClone(s)))}>Reload her Spring 2026 rounds</button>
+        )}
+        {others.length > 0 && (
+          <>
+            <h3>Other tournament rounds</h3>
+            <p className="muted small">Rounds marked Tournament in the app that aren’t U.S. Kids Golf. They stay out of the Tour tab unless you add them.</p>
+            {others.map((r) => (
+              <div key={r.id} className="tour-other">
+                <span><b>{r.course || 'Round'}</b> · {new Date(r.date).toLocaleDateString('en-AU', { day: 'numeric', month: 'short' })}</span>
+                <button type="button" className="btn btn-small" onClick={() => updateEntry(r.id, { event: { ...(r.event || {}), tour: 'Melbourne Local Tour' } })}>It was U.S. Kids</button>
+              </div>
+            ))}
+          </>
         )}
       </section>
     </div>
