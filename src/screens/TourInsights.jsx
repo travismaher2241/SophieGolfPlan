@@ -1,4 +1,5 @@
 import { useData } from '../lib/store.jsx'
+import NextEvent from './NextEvent.jsx'
 import { roundTotals, num } from '../lib/stats.js'
 import { LineChart } from '../components/ui.jsx'
 import { finishOf, finishLabel, priorityStatus, tournaments, EVENTS_NEEDED, ORDER_OF_FINISH_MAX_9 } from '../lib/tour.js'
@@ -126,6 +127,7 @@ export default function TourInsights() {
         <p className="muted small">Each dot is a girl’s score; the big pink dot is Sophie. Further left is better.</p>
         <FieldChart list={list} />
       </section>
+      <NextEvent />
       <PriorityCard />
     </>
   )
