@@ -213,7 +213,6 @@ function TourForm({ round, onDone }) {
 
 export function TourRow({ round, onOpen }) {
   const t = roundTotals(round)
-  const f = finishOf(round)
   return (
     <button type="button" className="tour-row" onClick={onOpen}>
       <div className="tour-score"><b>{t.score}</b><span>{toPar(t.toPar)}</span></div>
@@ -221,7 +220,6 @@ export function TourRow({ round, onOpen }) {
         <b>{round.course || 'Tournament'}</b>
         <span>{longDate(round.date)}{t.putts != null ? ` · ${t.putts} putts` : ''}</span>
       </div>
-      <div className="tour-finish">{f ? finishLabel(f) : <span className="muted small">add field</span>}</div>
     </button>
   )
 }

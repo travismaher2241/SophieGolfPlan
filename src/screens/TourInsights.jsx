@@ -2,6 +2,7 @@ import { useData } from '../lib/store.jsx'
 import NextEvent from './NextEvent.jsx'
 import { roundTotals, num } from '../lib/stats.js'
 import { LineChart } from '../components/ui.jsx'
+import { highlights } from '../lib/highlights.js'
 import { finishOf, finishLabel, priorityStatus, tournaments, EVENTS_NEEDED, ORDER_OF_FINISH_MAX_9 } from '../lib/tour.js'
 
 const short = (iso) => new Date(iso).toLocaleDateString('en-AU', { day: 'numeric', month: 'short' })
@@ -123,9 +124,12 @@ export default function TourInsights() {
         <TourKpis list={list} />
         <h3>Scores (per 9 holes)</h3>
         <TourTrend list={list} />
-        <h3>Against the field</h3>
-        <p className="muted small">Each dot is a girl’s score; the big pink dot is Sophie. Further left is better.</p>
-        <FieldChart list={list} />
+      </section>
+      <section className="card">
+        <h2>What she’s doing well</h2>
+        <ul className="wins">
+          {highlights(list).map((h, i) => <li key={i}><span>{h.icon}</span>{h.text}</li>)}
+        </ul>
       </section>
       <NextEvent />
       <PriorityCard />

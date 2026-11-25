@@ -7,6 +7,7 @@ const prompt = (facts, extra) => `Write a short letter to Sophie, a 9-year-old g
 
 Rules:
 - Celebrate only what she did well. No "areas to improve", no "next time fix", no criticism, nothing about mistakes, even gently.
+- Never compare her with other players or mention where she finished, unless she won.
 - Use only the facts below. Don't invent shots, holes, scores or places.
 - Never mention shot tracking, dots or maps.
 - When you talk about her swing, the message is: trust your speed, pick a clear target and hold your finish. Never tell her to slow down, steer it or "be more controlled".

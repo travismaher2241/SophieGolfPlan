@@ -27,34 +27,15 @@ export default function NextEvent() {
         <>
           <div className="predict">
             <div className="predict-big">{p.range ? `${p.range[0]}–${p.range[1]}` : '–'}</div>
-            <div className="predict-label">expected score{saved.date ? ` · ${longDate(saved.date)}` : ''}</div>
+            <div className="predict-label">her target range{saved.date ? ` · ${longDate(saved.date)}` : ''}</div>
           </div>
           {p.events === 0 ? (
-            <p className="muted small">No past Girls 9–10 results at {saved.venue}, so this uses her recent form on an average course.</p>
+            <p className="muted small">The range comes from her own recent rounds.</p>
           ) : (
             <>
-              <div className="stat-grid">
-                <div><b>{p.fieldAvg}</b><span>field average</span></div>
-                <div><b>{p.winning}</b><span>usual winner</span></div>
-                <div><b>{p.podium ?? '–'}</b><span>usual 3rd</span></div>
-                <div><b>{p.record}</b><span>best ever</span></div>
-              </div>
               <p className="muted small">
-                {p.events} past {p.events === 1 ? 'event' : 'events'} here. It plays {Math.abs(Math.round(p.offset)) < 1 ? 'about average' : `about ${Math.abs(Math.round(p.offset))} ${p.offset > 0 ? 'harder' : 'easier'} than an average event`}. Her range starts from her latest tournament, nudged a little toward her earlier ones, and adjusted for how hard each course plays.
+                This course plays {Math.abs(Math.round(p.offset)) < 1 ? 'about average' : `about ${Math.abs(Math.round(p.offset))} ${p.offset > 0 ? 'harder' : 'easier'} than an average event`}. The range comes from her own recent rounds.
               </p>
-              <table className="club-table">
-                <thead><tr><th>Date</th><th>Girls</th><th>Winner</th><th>Middle</th></tr></thead>
-                <tbody>
-                  {p.past.slice(0, 8).map((r) => (
-                    <tr key={r.date + r.venue}>
-                      <td>{longDate(r.date)}{r.tc ? ' 🏆' : ''}</td>
-                      <td>{r.scores.length}</td>
-                      <td>{Math.round(r.scores[0])}</td>
-                      <td>{Math.round(r.scores[Math.floor(r.scores.length / 2)])}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
             </>
           )}
         </>
