@@ -39,7 +39,7 @@ export default function Settings() {
 
       <section className="card">
         <h2>Date of birth (for grown-ups)</h2>
-        <p className="muted small">Used to work out her U.S. Kids age division.</p>
+        <p className="muted small">Used to work out her U.S. Kids age division. Already set from the Gemini tracker; only change it if it’s wrong.</p>
         <div className="inline-form">
           <input type="date" value={dob} onChange={(e) => setDob(e.target.value)} />
           <button type="button" className="btn btn-primary" disabled={!dob || dob === (profile.dob || '')} onClick={() => saveProfile({ dob })}>Save</button>
