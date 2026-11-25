@@ -16,7 +16,7 @@ export function letterFacts(entries, profile) {
   const latest = rows[rows.length - 1]
   const first = rows[0]
   const lines = []
-  lines.push(`Tournament rounds so far (9 holes, par 36 unless noted): ${rows.map(({ r, t, f }) => `${day(r.date)} at ${r.course}: ${t.score} (${t.toPar > 0 ? '+' : ''}${t.toPar})${f ? `, finished ${f.tied ? 'tied ' : ''}${ord(f.pos)} of ${f.of}` : ''}`).join('; ')}.`)
+  lines.push(`Tournament rounds so far (9 holes, par 36 unless noted): ${rows.map(({ r, t, f }) => `${day(r.date)} at ${r.course}: ${t.score} (${t.toPar > 0 ? '+' : ''}${t.toPar})`).join('; ')}.`)
   if (rows.length > 1) lines.push(`From her first tournament to her latest she improved by ${Math.round(first.t.per9 - latest.t.per9)} shots.`)
   const prev = rows[rows.length - 2]
   if (prev && prev.t.per9 > latest.t.per9) lines.push(`Her latest round was ${Math.round(prev.t.per9 - latest.t.per9)} shots better than the one before.`)
@@ -25,7 +25,6 @@ export function letterFacts(entries, profile) {
   const field = L.event?.field?.map((p) => p.score) || []
   if (field.length && latest.f) {
     const better = [...new Set(field.filter((s) => s < latest.t.score))].sort((a, b) => b - a)
-    if (better.length) lines.push(`In her latest round she was ${latest.t.score - better[0]} shot${latest.t.score - better[0] === 1 ? '' : 's'} away from the next group of players above her.`)
     if (latest.f.pos === 1) lines.push('She won her latest event.')
   }
   const facts = (L.holes || []).map(holeFacts).filter(Boolean)
@@ -41,7 +40,7 @@ export function letterFacts(entries, profile) {
   if (L.event?.notes) lines.push(`Notes from the parent about that round: ${L.event.notes}`)
 
   const d = divisionFor(profile.dob)
-  if (d) lines.push(`She is ${d.age}, in the ${d.division} division, with about ${d.monthsLeft} months left before she moves up. Many girls in her division are older and have played many more tournaments.`)
+  if (d) lines.push(`She is ${d.age}, in the ${d.division} division, with about ${d.monthsLeft} months left before she moves up.`)
   return { text: lines.join('\n'), latest, first, rows, division: d }
 }
 
@@ -60,13 +59,13 @@ export function templateLetter(facts) {
   }
   const pts = []
   if (latest.t.putts != null) pts.push(`Only ${latest.t.putts} putts, with ${latest.t.onePutts} one-putt${latest.t.onePutts === 1 ? '' : 's'}. Great touch on the greens!`)
-  if (latest.f && latest.f.pos <= 3) pts.push(`You finished ${latest.f.tied ? 'tied ' : ''}${ord(latest.f.pos)} out of ${latest.f.of} girls.`)
+  if (latest.f && latest.f.pos === 1) pts.push('You won!')
   pts.push('You kept smiling and kept going, all the way to the last hole.')
   sections.push({ heading: `Your round at ${latest.r.course.replace(/\s+(Public\s+)?Golf.*$/i, '')}`, points: pts })
   if (division) {
     sections.push({
       heading: 'Time is on your side',
-      points: [`You’re ${division.age}, and lots of the girls you play against are older and have played many more tournaments.`, `You still have about ${division.monthsLeft} months in ${division.division}, so there is so much more to come.`],
+      points: [`You’re ${division.age}, and you’re only just getting started.`, `You still have about ${division.monthsLeft} months in ${division.division}, so there is so much more to come.`],
     })
   }
   sections.push({
