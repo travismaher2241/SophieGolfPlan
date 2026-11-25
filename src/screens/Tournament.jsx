@@ -4,6 +4,7 @@ import { roundTotals } from '../lib/stats.js'
 import { ConfirmButton, Segmented } from '../components/ui.jsx'
 import { go } from '../App.jsx'
 import { shrink } from './Scorecard.jsx'
+import TourInsights from './TourInsights.jsx'
 import {
   divisionFor, fieldText, finishLabel, finishOf, parseField, SPRING_2026, tournaments,
 } from '../lib/tour.js'
@@ -253,6 +254,7 @@ export default function Tournament() {
         )}
       </section>
 
+      <TourInsights />
       <DivisionCard />
     </div>
   )
