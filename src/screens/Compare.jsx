@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useData } from '../lib/store.jsx'
 import { go } from '../App.jsx'
 import { ConfirmButton, Segmented } from '../components/ui.jsx'
+import { RILEY } from '../data/rivals.js'
 import { compareJourneys, parseRounds, roundsText, sophieRounds } from '../lib/compare.js'
 
 const shortCourse = (c = '') => c.replace(/\s+(Public\s+)?Golf.*$/i, '').trim() || c
@@ -59,7 +60,7 @@ function Editor({ player, onSave, onCancel, onDelete }) {
 
 export default function Compare() {
   const { entries, profile, saveProfile } = useData()
-  const players = profile.rivals || []
+  const players = profile.rivals || [RILEY]
   const [sel, setSel] = useState(players[0]?.id || null)
   const [editing, setEditing] = useState(players.length ? null : 'new')
   const mine = sophieRounds(entries)
@@ -78,7 +79,7 @@ export default function Compare() {
     <>
       <button type="button" className="back" onClick={() => go('tour')}>‹ Tournaments</button>
       <h1 className="page-title">Compare journeys</h1>
-      <p className="muted small">Grown-ups only. Lines up Sophie’s first tournaments with another girl’s first tournaments, round for round. Names and scores stay in your account; they aren’t part of the app’s code.</p>
+      <p className="muted small">Grown-ups only. Lines up Sophie’s first tournaments with another girl’s first tournaments, round for round. Riley is loaded already; add anyone else by pasting their rounds.</p>
     </>
   )
 
