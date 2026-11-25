@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useData } from '../lib/store.jsx'
 import { roundTotals } from '../lib/stats.js'
 import { ConfirmButton, Segmented } from '../components/ui.jsx'
@@ -227,37 +227,43 @@ export function TourRow({ round, onOpen }) {
 }
 
 export default function Tournament() {
-  const { entries, addEntry } = useData()
+  const { entries, addEntry, profile, saveProfile, ready } = useData()
   const [editing, setEditing] = useState(null) // null | 'new' | round
   const list = tournaments(entries)
   const missingSeed = SPRING_2026.filter((s) => !list.some((r) => r.course === s.course && r.date.slice(0, 10) === s.date.slice(0, 10)))
+
+  // Put her Spring 2026 rounds in once, automatically. If one is deleted later it stays deleted.
+  useEffect(() => {
+    if (!ready || profile.seededTour) return
+    missingSeed.forEach((s) => addEntry(structuredClone(s)))
+    saveProfile({ seededTour: true })
+  }, [ready, profile.seededTour]) // eslint-disable-line react-hooks/exhaustive-deps
 
   if (editing) return <TourForm round={editing === 'new' ? null : editing} onDone={() => setEditing(null)} />
 
   return (
     <div className="stack">
-      <h1 className="page-title">Tournaments</h1>
-      <p className="muted">For grown-ups: U.S. Kids Local Tour results. Rounds Sophie tracks in the app as Tournament show up here too, so you can add the field.</p>
-      <button type="button" className="btn btn-primary btn-xl" onClick={() => setEditing('new')}>🏆 Add a tournament</button>
-      {list.length > 0 && <button type="button" className="btn" onClick={() => go('tour/letter')}>✉️ Write Sophie a note</button>}
-      {list.length > 0 && <button type="button" className="btn" onClick={() => go('tour/compare')}>🔒 Compare journeys</button>}
+      <h1 className="page-title">🏆 Tournaments</h1>
+      <p className="muted">Sophie’s U.S. Kids Melbourne Local Tour journey.</p>
+
+      <TourInsights />
+      <DivisionCard />
 
       <section className="card">
         <h2>Results</h2>
         {list.length === 0 && <p className="empty">No tournaments yet.</p>}
         {[...list].reverse().map((r) => <TourRow key={r.id} round={r} onOpen={() => setEditing(r)} />)}
-        {missingSeed.length > 0 && (
-          <>
-            <p className="muted small" style={{ marginTop: 12 }}>
-              Load her first {missingSeed.length === 3 ? 'three' : missingSeed.length} Local Tour rounds from the Gemini tracker ({missingSeed.map((s) => s.totalScore || 46).join(', ')}). The other girls’ scores come in without names; add names by editing a round.
-            </p>
-            <button type="button" className="btn" onClick={() => missingSeed.forEach((s) => addEntry(structuredClone(s)))}>Load Spring 2026 rounds</button>
-          </>
-        )}
       </section>
 
-      <TourInsights />
-      <DivisionCard />
+      <section className="card">
+        <h2>For grown-ups</h2>
+        <button type="button" className="btn btn-primary" onClick={() => setEditing('new')}>➕ Add a tournament</button>
+        {list.length > 0 && <button type="button" className="btn" onClick={() => go('tour/letter')}>✉️ Write Sophie a note</button>}
+        {list.length > 0 && <button type="button" className="btn" onClick={() => go('tour/compare')}>🔒 Compare journeys</button>}
+        {missingSeed.length > 0 && profile.seededTour && (
+          <button type="button" className="btn" onClick={() => missingSeed.forEach((s) => addEntry(structuredClone(s)))}>Reload her Spring 2026 rounds</button>
+        )}
+      </section>
     </div>
   )
 }

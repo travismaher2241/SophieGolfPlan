@@ -51,7 +51,7 @@ h3 { font-size: 0.95rem; font-weight: 800; margin: 14px 0 6px; color: var(--mage
 /* Bottom tabs */
 .tabbar {
   position: fixed; bottom: 0; left: 0; right: 0; z-index: 5;
-  display: grid; grid-template-columns: repeat(5, 1fr);
+  display: grid; grid-template-columns: repeat(6, 1fr);
   max-width: 560px; margin: 0 auto;
   background: white; border-top: 1px solid var(--line);
   padding-bottom: env(safe-area-inset-bottom);
@@ -101,7 +101,7 @@ h3 { font-size: 0.95rem; font-weight: 800; margin: 14px 0 6px; color: var(--mage
 .step-val .unit { font-size: .9rem; color: var(--muted); margin-left: 3px; }
 
 /* Cycle tiles */
-.tiles-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.tiles-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
 .cycle { aspect-ratio: 1; min-height: var(--tap); border-radius: 16px; border: 2px dashed var(--pink-soft); background: var(--blush); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 4px; }
 .cycle-val { font-size: 1.7rem; font-weight: 900; color: var(--magenta-dark); line-height: 1; }
 .cycle-label { font-size: .68rem; font-weight: 700; color: var(--muted); }
@@ -119,7 +119,7 @@ h3 { font-size: 0.95rem; font-weight: 800; margin: 14px 0 6px; color: var(--mage
 .grid-h { font-size: .72rem; font-weight: 800; text-align: center; color: var(--muted); }
 .grid-r { font-weight: 900; color: var(--pink); text-align: center; }
 
-.num-pad { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.num-pad { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
 .num { min-height: 58px; border-radius: 14px; border: 2px solid var(--line); background: white; font-size: 1.4rem; font-weight: 900; }
 .num.good { border-color: #b2e2bd; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
@@ -136,7 +136,7 @@ h3 { font-size: 0.95rem; font-weight: 800; margin: 14px 0 6px; color: var(--mage
 .hero-level { color: white; font-weight: 900; padding: 6px 16px; border-radius: 999px; font-size: 1.05rem; }
 .hero-blurb { margin: 0; color: var(--muted); font-weight: 700; }
 .hero-count { font-weight: 800; color: var(--magenta-dark); }
-.pins { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; width: 100%; margin-top: 6px; }
+.pins { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; width: 100%; margin-top: 6px; }
 .pin { display: flex; flex-direction: column; align-items: center; gap: 4px; }
 .pin-dot { width: 52px; height: 52px; border-radius: 50%; background: #f1e4ea; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; filter: grayscale(1); opacity: .55; border: 3px solid white; box-shadow: 0 0 0 2px var(--line); }
 .pin.earned .pin-dot { filter: none; opacity: 1; box-shadow: 0 0 0 3px gold; }
