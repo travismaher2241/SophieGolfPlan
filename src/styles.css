@@ -418,3 +418,23 @@ h3 { font-size: 0.95rem; font-weight: 800; margin: 14px 0 6px; color: var(--mage
 .manage-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); }
 .manage-row > div { display: flex; flex-direction: column; min-width: 0; }
 .manage-row .btn { width: auto; flex: none; padding: 6px 12px; }
+
+/* "I've got 5 minutes" */
+.five-btn { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 84px; padding: 14px 18px; border: 0; border-radius: var(--radius); background: linear-gradient(90deg, var(--magenta), var(--pink)); color: white; text-align: left; box-shadow: 0 6px 18px rgba(173,36,88,.3); }
+.five-btn:active { transform: scale(.98); }
+.five-btn-icon { font-size: 2.4rem; line-height: 1; }
+.five-btn-text { display: flex; flex-direction: column; font-size: 1.3rem; font-weight: 900; }
+.five-btn-text small { font-size: .85rem; font-weight: 700; opacity: .9; }
+.five-card, .five-done { text-align: center; }
+.five-emoji { font-size: 3.4rem; line-height: 1.1; }
+.five-name { font-size: 1.4rem; margin: 6px 0 8px; }
+.five-need { margin: 0 0 8px; color: var(--muted); font-size: .92rem; }
+.five-steps { text-align: left; margin: 8px 0; padding-left: 22px; line-height: 1.45; font-weight: 600; }
+.five-steps li { margin-bottom: 6px; }
+.five-challenge { margin: 10px 0 0; font-weight: 900; color: var(--magenta-dark); }
+.five-timer { text-align: center; }
+.five-timer .stepper { justify-content: center; }
+.five-clock { font-size: 3rem; font-weight: 900; color: var(--magenta); font-variant-numeric: tabular-nums; }
+.five-clock.up { font-size: 1.8rem; color: var(--good); padding: 10px 0; }
+.five-finish { background: var(--good); border-color: var(--good); }
+.five-score { font-size: 1.6rem; font-weight: 900; color: var(--magenta); margin: 6px 0; }

@@ -41,6 +41,11 @@ export default function Home() {
         </button>
       )}
 
+      <button type="button" className="five-btn" onClick={() => go('five')}>
+        <span className="five-btn-icon">⚡</span>
+        <span className="five-btn-text">I've got 5 minutes!<small>Tap for a quick game or drill</small></span>
+      </button>
+
       <section className="quick">
         {!live && <button type="button" className="quick-btn" onClick={() => go('round')}><span>⛳</span>Play a round</button>}
         <button type="button" className="quick-btn" onClick={() => go('practice/tests')}><span>🎯</span>Skills test</button>
